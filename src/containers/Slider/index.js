@@ -49,6 +49,8 @@ const Slider = () => {
                   name="radio-button"
     // FIX : synchro pagination ↔ slide via l’index du slider //
                   checked={index === radioIdx}
+                  onChange={() => setIndex(radioIdx)}
+
                 />
               ))}
             </div>
