@@ -33,8 +33,15 @@ export const DataProvider = ({ children }) => {
     getData();
   });
 
-  // Ajout minimal : extraction des events + calcul du dernier
-  const events = data?.events || [];
+  // Extraction des events
+  const rawEvents = data?.events || [];
+
+  // Tri par date croissante
+  const events = rawEvents.slice().sort(
+    (a, b) => new Date(a.date) - new Date(b.date)
+  );
+
+  // Dernière prestation dans le temps
   const last = events.length > 0 ? events[events.length - 1] : null;
 
   return (
@@ -43,8 +50,8 @@ export const DataProvider = ({ children }) => {
       value={{
         data,
         error,
-        events, // ajouté
-        last,   // ajouté
+        events,
+        last,
       }}
     >
       {children}
