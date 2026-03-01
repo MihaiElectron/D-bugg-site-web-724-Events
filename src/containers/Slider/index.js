@@ -47,7 +47,8 @@ const Slider = () => {
                   key={`${event.id}`}
                   type="radio"
                   name="radio-button"
-                  checked={idx === radioIdx}
+    // FIX : synchro pagination ↔ slide via l’index du slider //
+                  checked={index === radioIdx}
                 />
               ))}
             </div>
