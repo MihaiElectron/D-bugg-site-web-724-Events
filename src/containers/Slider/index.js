@@ -7,10 +7,12 @@ import "./style.scss";
 const Slider = () => {
   const { data } = useData();
   const [index, setIndex] = useState(0);
-  const byDateDesc = data?.focus.sort((evtA, evtB) =>
-    // FIX : on inverse le tri, du plus recent au plus anciens
-    new Date(evtA.date) > new Date(evtB.date) ? -1 : 1,
-  );
+  const byDateDesc = data
+  ? [...data.focus].sort((a, b) =>
+      new Date(a.date) > new Date(b.date) ? -1 : 1
+    )
+  : [];
+
 
   const nextCard = () =>
     setTimeout(() => {
