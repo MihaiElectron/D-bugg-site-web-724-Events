@@ -12,8 +12,9 @@ const Slider = () => {
   );
   const nextCard = () => {
     setTimeout(
-      () => setIndex(index < byDateDesc.length ? index + 1 : 0),
-      5000
+  // FIX : évite l’index hors limites
+        () => setIndex(index < byDateDesc.length -1 ? index + 1 : 0),
+        5000
     );
   };
   useEffect(() => {
